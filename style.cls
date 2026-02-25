@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" demote-non-dropping-particle="sort-only" version="1.0" class="in-text" default-locale="en-US">
   <info>
-    <title>Scientia Iranica (with DOI)</title>
-    <id>http://www.zotero.org/styles/scientia-iranica-with-doi</id>
-    <link href="http://www.zotero.org/styles/scientia-iranica-with-doi" rel="self"/>
+    <title>Scientia Iranica</title>
+    <id>http://www.zotero.org/styles/scientia-iranica</id>
+    <link href="http://www.zotero.org/styles/scientia-iranica" rel="self"/>
     <link href="http://www.zotero.org/styles/the-optical-society" rel="template"/>
     <link href="http://scientiairanica.sharif.edu/journal/authors.note" rel="documentation"/>
     <author>
@@ -15,8 +15,8 @@
     <category field="engineering"/>
     <issn>1026-3098</issn>
     <eissn>2345-3605</eissn>
-    <summary>Common style used by Scientia Iranica with DOI hyperlinks added</summary>
-    <updated>2024-01-01T00:00:00+00:00</updated>
+    <summary>Common style use by Scientia Iranica</summary>
+    <updated>2019-01-17T02:53:15+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale>
@@ -218,7 +218,6 @@
           <text macro="year-date" prefix=" (" suffix=")"/>
         </else-if>
         <else>
-          <!-- This handles journal articles -->
           <group delimiter=", ">
             <text variable="title" quotes="true"/>
             <text variable="container-title" form="short" font-style="italic"/>
@@ -228,8 +227,6 @@
           <text prefix=" (" suffix=")" macro="year-date"/>
         </else>
       </choose>
-      <!-- Add DOI at the end of every reference, before the final period -->
-      <text variable="DOI" prefix=" https://doi.org/"/>
     </layout>
   </bibliography>
 </style>

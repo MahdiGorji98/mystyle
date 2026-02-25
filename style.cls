@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" demote-non-dropping-particle="sort-only" version="1.0" class="in-text" default-locale="en-US">
   <info>
-    <title>Scientia Iranica</title>
-    <id>http://www.zotero.org/styles/scientia-iranica</id>
-    <link href="http://www.zotero.org/styles/scientia-iranica" rel="self"/>
+    <title>Scientia Iranica (with DOI)</title>
+    <id>http://www.zotero.org/styles/scientia-iranica-with-doi</id>
+    <link href="http://www.zotero.org/styles/scientia-iranica-with-doi" rel="self"/>
     <link href="http://www.zotero.org/styles/the-optical-society" rel="template"/>
     <link href="http://scientiairanica.sharif.edu/journal/authors.note" rel="documentation"/>
     <author>
       <name>Sayyed Mohsen Vazirizade</name>
       <email>smvazirizade@email.arizona.edu</email>
     </author>
+    <contributor>
+      <name>Modified with DOI support</name>
+    </contributor>
     <category citation-format="numeric"/>
     <category field="science"/>
     <category field="engineering"/>
     <issn>1026-3098</issn>
     <eissn>2345-3605</eissn>
-    <summary>Common style use by Scientia Iranica</summary>
-    <updated>2019-01-17T02:53:15+00:00</updated>
+    <summary>Common style used by Scientia Iranica with DOI hyperlinks added</summary>
+    <updated>2024-01-01T00:00:00+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale>
@@ -132,45 +135,49 @@
   </citation>
   <bibliography second-field-align="flush" entry-spacing="0">
     <layout suffix=".">
-        <text variable="citation-number" suffix=". "/>
-        <text macro="author" suffix=", "/>
-        <choose>
+      <text variable="citation-number" suffix=". "/>
+      <text macro="author" suffix=", "/>
+      <choose>
         <if match="any" type="bill book graphic legal_case legislation motion_picture report song">
-            <group delimiter=" ">
+          <group delimiter=" ">
             <group delimiter=", ">
-                <text variable="title" text-case="title" font-style="italic"/>
-                <text macro="edition"/>
-                <text macro="series"/>
-                <text macro="publisher"/>
+              <text variable="title" text-case="title" font-style="italic"/>
+              <text macro="edition"/>
+              <text macro="series"/>
+              <text macro="publisher"/>
             </group>
             <text macro="year-date" prefix="(" suffix=")"/>
-            </group>
+          </group>
+          <!-- Add DOI for books and reports -->
+          <text variable="DOI" prefix=" https://doi.org/"/>
         </if>
         <else-if type="paper-conference">
-            <group delimiter=", ">
+          <group delimiter=", ">
             <text variable="title" quotes="true"/>
             <text variable="container-title" form="short" text-case="title" font-style="italic"/>
             <text macro="editor"/>
             <text macro="series"/>
             <text macro="publisher"/>
             <text macro="pages"/>
-            </group>
-            <text macro="year-date" prefix=" (" suffix=")"/>
+          </group>
+          <text macro="year-date" prefix=" (" suffix=")"/>
+          <!-- Add DOI for conference papers -->
+          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else-if type="speech">
-            <group delimiter=", ">
+          <group delimiter=", ">
             <text variable="title" quotes="true"/>
             <text variable="event" prefix=" presented at " form="long" text-case="title"/>
             <text variable="event-place" text-case="title"/>
-            </group>
-            <text prefix=" (" suffix=")" macro="day-date"/>
+          </group>
+          <text prefix=" (" suffix=")" macro="day-date"/>
         </else-if>
         <else-if match="any" type="chapter">
-            <group delimiter=", ">
+          <group delimiter=", ">
             <text variable="title" quotes="true"/>
             <group delimiter=" ">
-                <text term="in" text-case="capitalize-first"/>
-                <text variable="container-title" form="long" text-case="title" font-style="italic"/>
+              <text term="in" text-case="capitalize-first"/>
+              <text variable="container-title" form="long" text-case="title" font-style="italic"/>
             </group>
             <text macro="editor"/>
             <text macro="edition"/>
@@ -178,57 +185,70 @@
             <text macro="publisher"/>
             <text macro="volume"/>
             <text macro="pages"/>
-            </group>
-            <text prefix=" (" suffix=")" macro="day-date"/>
+          </group>
+          <text prefix=" (" suffix=")" macro="day-date"/>
+          <!-- Add DOI for book chapters -->
+          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else-if type="patent">
-            <text variable="title" quotes="true" suffix=", "/>
-            <group delimiter=" ">
+          <text variable="title" quotes="true" suffix=", "/>
+          <group delimiter=" ">
             <text macro="patent-authority-number"/>
             <text prefix=" (" suffix=")" macro="day-date"/>
-            </group>
+          </group>
+          <!-- Add DOI for patents -->
+          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else-if type="thesis">
-            <text variable="title" quotes="true" suffix=", "/>
-            <group delimiter=", ">
+          <text variable="title" quotes="true" suffix=", "/>
+          <group delimiter=", ">
             <text variable="genre"/>
             <text variable="publisher"/>
-            </group>
-            <text prefix=" (" suffix=")" macro="year-date"/>
+          </group>
+          <text prefix=" (" suffix=")" macro="year-date"/>
+          <!-- Add DOI for theses -->
+          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else-if type="webpage">
-            <text variable="title" quotes="true" suffix=", "/>
-            <text variable="URL"/>
+          <text variable="title" quotes="true" suffix=", "/>
+          <text variable="URL"/>
+          <!-- Add DOI for webpages -->
+          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else-if type="personal_communication">
-            <text macro="personal-communication"/>
+          <text macro="personal-communication"/>
         </else-if>
         <else-if type="article-newspaper">
-            <text variable="title" quotes="true" suffix=", "/>
-            <text variable="container-title" form="long"/>
-            <text prefix=" (" suffix=")" macro="day-date"/>
+          <text variable="title" quotes="true" suffix=", "/>
+          <text variable="container-title" form="long"/>
+          <text prefix=" (" suffix=")" macro="day-date"/>
+          <!-- Add DOI for newspaper articles -->
+          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else-if type="report">
-            <group delimiter=", ">
+          <group delimiter=", ">
             <text variable="title" quotes="true"/>
             <text variable="genre"/>
             <text variable="number"/>
             <text macro="publisher"/>
-            </group>
-            <text macro="year-date" prefix=" (" suffix=")"/>
+          </group>
+          <text macro="year-date" prefix=" (" suffix=")"/>
+          <!-- Add DOI for reports -->
+          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else>
-            <group delimiter=", ">
+          <!-- This handles journal articles (the most common type) -->
+          <group delimiter=", ">
             <text variable="title" quotes="true"/>
             <text variable="container-title" form="short" font-style="italic"/>
             <text macro="volume"/>
             <text macro="pages"/>
-            </group>
-            <text prefix=" (" suffix=")" macro="year-date"/>
+          </group>
+          <text prefix=" (" suffix=")" macro="year-date"/>
+          <!-- Add DOI for journal articles -->
+          <text variable="DOI" prefix=" https://doi.org/"/>
         </else>
-        </choose>
-        <!-- ADD THIS LINE - DOI with hyperlink prefix -->
-        <text variable="DOI" prefix=" https://doi.org/"/>
+      </choose>
     </layout>
-    </bibliography>
+  </bibliography>
 </style>

@@ -10,9 +10,6 @@
       <name>Sayyed Mohsen Vazirizade</name>
       <email>smvazirizade@email.arizona.edu</email>
     </author>
-    <contributor>
-      <name>Modified with DOI support</name>
-    </contributor>
     <category citation-format="numeric"/>
     <category field="science"/>
     <category field="engineering"/>
@@ -148,8 +145,6 @@
             </group>
             <text macro="year-date" prefix="(" suffix=")"/>
           </group>
-          <!-- Add DOI for books and reports -->
-          <text variable="DOI" prefix=" https://doi.org/"/>
         </if>
         <else-if type="paper-conference">
           <group delimiter=", ">
@@ -161,8 +156,6 @@
             <text macro="pages"/>
           </group>
           <text macro="year-date" prefix=" (" suffix=")"/>
-          <!-- Add DOI for conference papers -->
-          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else-if type="speech">
           <group delimiter=", ">
@@ -187,8 +180,6 @@
             <text macro="pages"/>
           </group>
           <text prefix=" (" suffix=")" macro="day-date"/>
-          <!-- Add DOI for book chapters -->
-          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else-if type="patent">
           <text variable="title" quotes="true" suffix=", "/>
@@ -196,8 +187,6 @@
             <text macro="patent-authority-number"/>
             <text prefix=" (" suffix=")" macro="day-date"/>
           </group>
-          <!-- Add DOI for patents -->
-          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else-if type="thesis">
           <text variable="title" quotes="true" suffix=", "/>
@@ -206,14 +195,10 @@
             <text variable="publisher"/>
           </group>
           <text prefix=" (" suffix=")" macro="year-date"/>
-          <!-- Add DOI for theses -->
-          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else-if type="webpage">
           <text variable="title" quotes="true" suffix=", "/>
           <text variable="URL"/>
-          <!-- Add DOI for webpages -->
-          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else-if type="personal_communication">
           <text macro="personal-communication"/>
@@ -222,8 +207,6 @@
           <text variable="title" quotes="true" suffix=", "/>
           <text variable="container-title" form="long"/>
           <text prefix=" (" suffix=")" macro="day-date"/>
-          <!-- Add DOI for newspaper articles -->
-          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else-if type="report">
           <group delimiter=", ">
@@ -233,11 +216,9 @@
             <text macro="publisher"/>
           </group>
           <text macro="year-date" prefix=" (" suffix=")"/>
-          <!-- Add DOI for reports -->
-          <text variable="DOI" prefix=" https://doi.org/"/>
         </else-if>
         <else>
-          <!-- This handles journal articles (the most common type) -->
+          <!-- This handles journal articles -->
           <group delimiter=", ">
             <text variable="title" quotes="true"/>
             <text variable="container-title" form="short" font-style="italic"/>
@@ -245,10 +226,10 @@
             <text macro="pages"/>
           </group>
           <text prefix=" (" suffix=")" macro="year-date"/>
-          <!-- Add DOI for journal articles -->
-          <text variable="DOI" prefix=" https://doi.org/"/>
         </else>
       </choose>
+      <!-- Add DOI at the end of every reference, before the final period -->
+      <text variable="DOI" prefix=" https://doi.org/"/>
     </layout>
   </bibliography>
 </style>
